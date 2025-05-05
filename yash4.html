@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumo | Pro Portfolio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- DaisyUI CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Flowbite CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  <style>
+    body {
+      font-family: 'Signika', sans-serif;
+    }
+  </style>
+</head><body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+  <!-- Navbar with Drawer -->
+  <div class="drawer">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle">
+    <div class="drawer-content">
+      <div class="navbar bg-base-100 bg-opacity-10 p-4">
+        <div class="flex-none lg:hidden">
+          <label for="my-drawer" class="btn btn-square btn-ghost">
+            <i class="bi bi-list text-xl"></i>
+          </label>
+        </div>
+        <div class="flex-1">
+          <a class="text-xl font-bold">Soumo</a>
+        </div>
+        <div class="flex-none hidden lg:block">
+          <ul class="menu menu-horizontal px-1">
+            <li><a>Home</a></li>
+            <li><a>About</a></li>
+            <li><a>Testimonials</a></li>
+            <li><a>Contact</a></li>
+          </ul>
+        </div>
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost rounded-btn">
+            <i class="bi bi-three-dots-vertical"></i>
+          </label>
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52">
+            <li><a>Settings</a></li>
+            <li><a>Help</a></li>
+          </ul>
+        </div>
+      </div><!-- Jumbotron -->
+  <div class="hero min-h-screen bg-base-200 bg-opacity-10">
+    <div class="hero-content text-center">
+      <div class="max-w-xl">
+        <h1 class="text-5xl font-bold">Hi, I'm Soumo</h1>
+        <p class="py-6 text-lg">Developer, Anime Lover, Enthapauner</p>
+        <p class="text-md text-gray-300 leading-relaxed">I'm a passionate full-stack developer who crafts clean, scalable, and efficient solutions. I dive deep into anime worlds, love experimenting with UI/UX, and constantly build next-level ideas. Fueled by coffee and code, I’m on a journey to merge art with logic. Always exploring, always improving.</p>
+        <blockquote class="mt-6 text-xl italic text-white">“A coding expert who loves solving complex problems with clean solutions.”</blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- Default Mockup Card -->
+  <div class="mockup-window border bg-base-300 max-w-4xl mx-auto mt-10">
+    <div class="flex justify-center px-4 py-16 bg-base-200">Default Mockup Section</div>
+  </div>
+
+  <!-- Testimonial Card -->
+  <div class="max-w-xl mx-auto mt-10">
+    <div class="card bg-neutral text-neutral-content shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Client Testimonial</h2>
+        <p>Soumo is an exceptional developer! Fast, creative, and always exceeds expectations.</p>
+        <div class="card-actions justify-end">
+          <div class="badge badge-outline text-white">5 Stars</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend Indicator -->
+  <div class="flex gap-4 mt-10 justify-center">
+    <div class="flex items-center gap-2">
+      <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+      <span>Online</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+      <span>Busy</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-4 h-4 bg-red-500 rounded-full"></div>
+      <span>Offline</span>
+    </div>
+  </div>
+
+  <!-- Badge with icon only -->
+  <div class="flex justify-center mt-6">
+    <span class="badge badge-primary p-3"><i class="bi bi-lightning-charge-fill"></i></span>
+  </div>
+
+  <!-- Stacked Avatar -->
+  <div class="avatar-group -space-x-6 justify-center mt-10">
+    <div class="avatar">
+      <div class="w-12">
+        <img src="https://i.pravatar.cc/100?img=3" />
+      </div>
+    </div>
+    <div class="avatar">
+      <div class="w-12">
+        <img src="https://i.pravatar.cc/100?img=5" />
+      </div>
+    </div>
+    <div class="avatar">
+      <div class="w-12">
+        <img src="https://i.pravatar.cc/100?img=7" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Nesting Accordion -->
+  <div class="collapse collapse-arrow bg-base-200 mt-10 w-full max-w-xl mx-auto">
+    <input type="checkbox" />
+    <div class="collapse-title text-xl font-medium">
+      Skills & Experience
+    </div>
+    <div class="collapse-content">
+      <p>Full-Stack Development, UI/UX Design, DevOps</p>
+      <div class="collapse collapse-arrow mt-4">
+        <input type="checkbox" />
+        <div class="collapse-title text-md font-medium">
+          Tools
+        </div>
+        <div class="collapse-content">
+          <p>JavaScript, React, Node.js, TailwindCSS, Docker</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer footer-center p-10 mt-20 bg-base-200 text-base-content rounded">
+    <nav class="grid grid-flow-col gap-4">
+      <a class="link link-hover">About</a>
+      <a class="link link-hover">Projects</a>
+      <a class="link link-hover">Contact</a>
+    </nav>
+    <aside>
+      <p>&copy; <span id="year"></span> Soumo. All rights reserved.</p>
+    </aside>
+  </footer>
+</div>
+
+<div class="drawer-side">
+  <label for="my-drawer" class="drawer-overlay"></label>
+  <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+    <li><a>Dashboard</a></li>
+    <li><a>Portfolio</a></li>
+    <li><a>Settings</a></li>
+    <li><a>Logout</a></li>
+  </ul>
+</div>
+
+  </div>  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+  </script></body></html>
