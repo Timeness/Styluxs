@@ -1,0 +1,51 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Rate Limit
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Viga&amp;display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js">
+  </script>
+  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js">
+  </script>
+  <style>
+   body {
+        font-family: "Viga", sans-serif;
+      }
+      .background-image {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        filter: brightness(0.5) blur(4px);
+      }
+      .icon-link {
+        margin-top: -1.5rem;
+      }
+  </style>
+ </head>
+ <body class="bg-[#f5f9f8] min-h-screen flex flex-col items-center pt-24 px-6 text-center text-gray-500 text-sm relative">
+  <img alt="Background image covering entire viewport with darkened and blurred effect" aria-hidden="true" class="background-image" height="1080" src="1738250210575.jpg" width="1920"/>
+  <h1 class="text-3xl font-normal text-[#22292f] mb-6" style="font-family: 'Viga', sans-serif;">
+   Whoa there!
+  </h1>
+  <p class="mb-2" style="font-family: 'Viga', sans-serif;">
+   You have exceeded a secondary rate limit.
+  </p>
+  <p class="mb-20" style="font-family: 'Viga', sans-serif;">
+   Please wait a few minutes before you try again;
+   <br/>
+   in some cases this may take up to an hour.
+  </p>
+  <a href="/Styluxs/yash" aria-label="Home link" class="icon-link" target="_blank" rel="noopener noreferrer">
+   <span aria-hidden="true" class="iconify text-gray-400 opacity-30" data-height="40" data-icon="mingcute:home-3-fill" data-width="40">
+   </span>
+  </a>
+ </body>
+</html>
