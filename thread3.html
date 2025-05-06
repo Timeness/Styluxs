@@ -1,167 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soumo's Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.min.css" rel="stylesheet">
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .navbar { transition: all 0.3s ease; }
-        .navbar-sticky { position: sticky; top: 0; z-index: 50; }
-        .dropdown:hover .dropdown-menu { display: block; }
-        .jumbotron { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .legend-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
-        .stacked-avatar img { border: 2px solid white; margin-left: -15px; }
-        .stacked-avatar img:first-child { margin-left: 0; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumo - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Viga&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .viga-font { font-family: 'Viga', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #1e3a8a, #7c3aed); }
+    .hover-scale { transition: transform 0.3s; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .mockup-shadow { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+  </style>
 </head>
-<body class="bg-gray-100">
-    <nav class="navbar bg-gray-900 text-white shadow-lg navbar-sticky">
-        <div class="container mx-auto flex justify-between items-center p-4">
-            <a href="#" class="text-2xl font-bold">Soumo</a>
-            <button class="btn btn-ghost md:hidden" onclick="toggleDrawer()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-            <div class="hidden md:flex space-x-6">
-                <a href="#home" class="hover:text-indigo-400">Home</a>
-                <a href="#about" class="hover:text-indigo-400">About</a>
-                <a href="#projects" class="hover:text-indigo-400">Projects</a>
-                <div class="relative dropdown">
-                    <a href="#" class="hover:text-indigo-400">More</a>
-                    <div class="dropdown-menu hidden absolute bg-gray-800 text-white rounded-lg shadow-lg mt-2">
-                        <a href="#skills" class="block px-4 py-2 hover:bg-gray-700">Skills</a>
-                        <a href="#testimonials" class="block px-4 py-2 hover:bg-gray-700">Testimonials</a>
-                        <a href="#contact" class="block px-4 py-2 hover:bg-gray-700">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body class="bg-gray-900 text-white min-h-screen">
+  <div class="fixed inset-0 bg-gradient-to-br from-indigo-900/20 to-purple-900/20 -z-10"></div>
 
-    <div id="drawer" class="fixed inset-0 bg-gray-900 bg-opacity-95 transform translate-x-full transition-transform md:hidden">
-        <div class="flex justify-end p-4">
-            <button onclick="toggleDrawer()" class="text-white">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+  <nav class="gradient-bg sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <h1 class="text-2xl viga-font text-white">Soumo</h1>
+        </div>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="#home" class="text-white hover:text-yellow-300">Home</a>
+          <a href="#about" class="text-white hover:text-yellow-300">About</a>
+          <a href="#portfolio" class="text-white hover:text-yellow-300">Portfolio</a>
+          <a href="#testimonials" class="text-white hover:text-yellow-300">Testimonials</a>
+          <div class="relative">
+            <button class="text-white hover:text-yellow-300 flex items-center" data-dropdown-toggle="dropdown">
+              More <i class="fas fa-chevron-down ml-2"></i>
             </button>
+            <div id="dropdown" class="hidden absolute bg-gray-800 rounded-lg shadow w-44 mt-2">
+              <ul class="py-2 text-sm text-gray-200">
+                <li><a href="#blog" class="block px-4 py-2 hover:bg-gray-700">Blog</a></li>
+                <li><a href="#contact" class="block px-4 py-2 hover:bg-gray-700">Contact</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="flex flex-col items-center space-y-6 text-white text-lg">
-            <a href="#home" onclick="toggleDrawer()">Home</a>
-            <a href="#about" onclick="toggleDrawer()">About</a>
-            <a href="#projects" onclick="toggleDrawer()">Projects</a>
-            <a href="#skills" onclick="toggleDrawer()">Skills</a>
-            <a href="#testimonials" onclick="toggleDrawer()">Testimonials</a>
-            <a href="#contact" onclick="toggleDrawer()">Contact</a>
+        <div class="md:hidden flex items-center">
+          <button data-drawer-target="drawer" data-drawer-toggle="drawer" class="text-white">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
         </div>
+      </div>
     </div>
+  </nav>
 
-    <section id="home" class="jumbotron text-white py-20 text-center">
-        <div class="container mx-auto">
-            <h1 class="text-5xl font-bold mb-4">Hey, I'm Soumo!</h1>
-            <p class="text-xl mb-6">Developer | Anime Lover | Enthusiast Entrepreneur</p>
-            <p class="text-lg max-w-2xl mx-auto">"A coding expert who loves solving complex problems with clean solutions."</p>
-            <a href="#contact" class="btn btn-primary mt-6">Get in Touch</a>
+  <div id="drawer" class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-800 w-64">
+    <h5 class="text-base font-semibold text-white viga-font">Menu</h5>
+    <button data-drawer-hide="drawer" class="text-white hover:bg-gray-700 rounded-lg p-1.5 absolute top-2.5 right-2.5">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="py-4">
+      <a href="#home" class="block py-2 px-3 text-white hover:bg-gray-700 rounded">Home</a>
+      <a href="#about" class="block py-2 px-3 text-white hover:bg-gray-700 rounded">About</a>
+      <a href="#portfolio" class="block py-2 px-3 text-white hover:bg-gray-700 rounded">Portfolio</a>
+      <a href="#testimonials" class="block py-2 px-3 text-white hover:bg-gray-700 rounded">Testimonials</a>
+      <a href="#blog" class="block py-2 px-3 text-white hover:bg-gray-700 rounded">Blog</a>
+      <a href="#contact" class="block py-2 px-3 text-white hover:bg-gray-700 rounded">Contact</a>
+    </div>
+  </div>
+
+  <section id="home" class="py-20 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative">
+        <h1 class="text-5xl md:text-7xl viga-font text-white mb-4">Hey, I'm Soumo</h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-6">Developer | Anime Lover | Enthapauner</p>
+        <div class="flex justify-center space-x-4">
+          <a href="#portfolio" class="btn btn-primary hover-scale">View Work</a>
+          <a href="#contact" class="btn btn-outline btn-secondary hover-scale">Contact Me</a>
         </div>
-    </section>
+        <div class="absolute -top-10 -right-10 text-yellow-400">
+          <span class="badge badge-lg"><i class="fas fa-star"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-8">About Me</h2>
-            <p class="text-lg max-w-3xl mx-auto mb-6">I'm Soumo, a passionate developer with a knack for creating innovative solutions. My love for anime fuels my creativity, while my entrepreneurial spirit drives me to explore new challenges. Whether it's coding clean applications or dreaming up the next big startup, I'm always pushing boundaries.</p>
-            <div class="flex justify-center space-x-4 stacked-avatar">
-                <img src="https://via.placeholder.com/50" class="rounded-full" alt="avatar1">
-                <img src="https://via.placeholder.com/50" class="rounded-full" alt="avatar2">
-                <img src="https://via.placeholder.com/50" class="rounded-full" alt="avatar3">
+  <section id="about" class="py-16 bg-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl viga-font text-center mb-12">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <img src="https://via.placeholder.com/400" alt="Soumo Profile" class="rounded-lg mockup-shadow">
+        </div>
+        <div>
+          <p class="text-lg mb-4">I'm Soumo, a passionate developer with a knack for creating seamless web experiences. My love for anime fuels my creativity, while my entrepreneurial spirit drives me to innovate.</p>
+          <p class="text-lg mb-4">With expertise in modern frameworks and a keen eye for design, I build solutions that are both functional and visually stunning. Let's bring your ideas to life!</p>
+          <p class="italic text-xl text-yellow-300">“A coding expert who loves solving complex problems with clean solutions.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl viga-font text-center mb-12">Portfolio</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card bg-gray-800 mockup-shadow hover-scale">
+          <figure><img src="https://via.placeholder.com/600x400" alt="Project Mockup" class="w-full"></figure>
+          <div class="card-body">
+            <h2 class="card-title">Project One</h2>
+            <p>A modern web app built with Next.js and Tailwind CSS.</p>
+            <div class="card-actions">
+              <a href="#" class="btn btn-sm btn-primary">View Project</a>
             </div>
+          </div>
         </div>
-    </section>
-
-    <section id="projects" class="py-16 bg-gray-100">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card bg-white shadow-lg" data-project="web-app">
-                    <img src="https://via.placeholder.com/300x200" class="w-full h-48 object-cover" alt="project">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Web App Mockup</h3>
-                        <p>A sleek web application built with modern tech stacks.</p>
-                        <span class="badge bg-indigo-500 text-white mt-4 inline-flex items-center">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </span>
-                    </div>
-                </div>
+        <div class="card bg-gray-800 mockup-shadow hover-scale">
+          <figure><img src="https://via.placeholder.com/600x400" alt="Project Mockup" class="w-full"></figure>
+          <div class="card-body">
+            <h2 class="card-title">Project Two</h2>
+            <p>An e-commerce platform with a sleek UI and robust backend.</p>
+            <div class="card-actions">
+              <a href="#" class="btn btn-sm btn-primary">View Project</a>
             </div>
+          </div>
         </div>
-    </section>
-
-    <section id="skills" class="py-16 bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">Skills</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="badge bg-green-500 text-white p-2 rounded"><span class="legend-indicator bg-green-700 mr-2"></span>JavaScript</span>
-                <span class="badge bg-blue-500 text-white p-2 rounded"><span class="legend-indicator bg-blue-700 mr-2"></span>React</span>
-                <span class="badge bg-purple-500 text-white p-2 rounded"><span class="legend-indicator bg-purple-700 mr-2"></span>Node.js</span>
+        <div class="card bg-gray-800 mockup-shadow hover-scale">
+          <figure><img src="https://via.placeholder.com/600x400" alt="Project Mockup" class="w-full"></figure>
+          <div class="card-body">
+            <h2 class="card-title">Project Three</h2>
+            <p>A portfolio site showcasing creative design and animations.</p>
+            <div class="card-actions">
+              <a href="#" class="btn btn-sm btn-primary">View Project</a>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="testimonials" class="py-16 bg-gray-100">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">Testimonials</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card bg-white shadow-lg p-6 text-center">
-                    <p class="mb-4">"Soumo's coding skills are top-notch!"</p>
-                    <p class="font-bold">John Doe</p>
-                    <p class="text-sm text-gray-600">CEO, Tech Corp</p>
-                </div>
+  <section id="testimonials" class="py-16 bg-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl viga-font text-center mb-12">Testimonials</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card bg-gray-800 shadow-lg">
+          <div class="card-body">
+            <div class="flex items-center mb-4">
+              <div class="avatar-group -space-x-6">
+                <div class="avatar"><div class="w-12"><img src="https://via.placeholder.com/50" alt="Avatar"></div></div>
+                <div class="avatar"><div class="w-12"><img src="https://via.placeholder.com/50" alt="Avatar"></div></div>
+              </div>
             </div>
+            <p>"Soumo's work is exceptional. He delivered a flawless project on time!"</p>
+            <p class="font-bold mt-2">John Doe</p>
+            <p class="text-sm text-gray-400">CEO, TechCorp</p>
+          </div>
         </div>
-    </section>
-
-    <section id="faq" class="py-16 bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">FAQ</h2>
-            <div class="accordion max-w-2xl mx-auto">
-                <div class="accordion-item">
-                    <input type="checkbox" id="acc1" class="hidden">
-                    <label for="acc1" class="block bg-gray-100 p-4 cursor-pointer">What do you specialize in?</label>
-                    <div class="accordion-content hidden p-4 bg-gray-50">I specialize in full-stack development with a focus on JavaScript frameworks.</div>
-                </div>
-                <div class="accordion-item">
-                    <input type="checkbox" id="acc2" class="hidden">
-                    <label for="acc2" class="block bg-gray-100 p-4 cursor-pointer">What's your favorite anime?</label>
-                    <div class="accordion-content hidden p-4 bg-gray-50">Tough call, but I'd say Attack on Titan!</div>
-                </div>
+        <div class="card bg-gray-800 shadow-lg">
+          <div class="card-body">
+            <div class="flex items-center mb-4">
+              <div class="avatar-group -space-x-6">
+                <div class="avatar"><div class="w-12"><img src="https://via.placeholder.com/50" alt="Avatar"></div></div>
+                <div class="avatar"><div class="w-12"><img src="https://via.placeholder.com/50" alt="Avatar"></div></div>
+              </div>
             </div>
+            <p>"His creativity and technical skills are unmatched. Highly recommend!"</p>
+            <p class="font-bold mt-2">Jane Smith</p>
+            <p class="text-sm text-gray-400">Designer, CreativeHub</p>
+          </div>
         </div>
-    </section>
-
-    <section id="contact" class="py-16 bg-gray-900 text-white text-center">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold mb-8">Contact Me</h2>
-            <form class="max-w-lg mx-auto">
-                <input type="text" placeholder="Name" class="input w-full mb-4">
-                <input type="email" placeholder="Email" class="input w-full mb-4">
-                <textarea placeholder="Message" class="textarea w-full mb-4"></textarea>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
+        <div class="card bg-gray-800 shadow-lg">
+          <div class="card-body">
+            <div class="flex items-center mb-4">
+              <div class="avatar-group -space-x-6">
+                <div class="avatar"><div class="w-12"><img src="https://via.placeholder.com/50" alt="Avatar"></div></div>
+                <div class="avatar"><div class="w-12"><img src="https://via.placeholder.com/50" alt="Avatar"></div></div>
+              </div>
+            </div>
+            <p>"A true professional with a passion for coding and anime!"</p>
+            <p class="font-bold mt-2">Alex Brown</p>
+            <p class="text-sm text-gray-400">Developer, CodeZap</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <footer class="bg-gray-800 text-white py-8 text-center">
-        <p>&copy; 2025 Soumo. All rights reserved.</p>
-    </footer>
+  <section id="skills" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl viga-font text-center mb-12">Skills</h2>
+      <div class="collapse collapse-arrow bg-gray-800 mb-4">
+        <input type="radio" name="accordion">
+        <div class="collapse-title text-xl font-medium">Frontend Development</div>
+        <div class="collapse-content">
+          <p>Expertise in React, Next.js, Tailwind CSS, and responsive design.</p>
+        </div>
+      </div>
+      <div class="collapse collapse-arrow bg-gray-800 mb-4">
+        <input type="radio" name="accordion">
+        <div class="collapse-title text-xl font-medium">Backend Development</div>
+        <div class="collapse-content">
+          <p>Proficient in Node.js, Express, and MongoDB for scalable APIs.</p>
+        </div>
+      </div>
+      <div class="collapse collapse-arrow bg-gray-800">
+        <input type="radio" name="accordion">
+        <div class="collapse-title text-xl font-medium">Anime-Inspired Design</div>
+        <div class="collapse-content">
+          <p>Creating visually stunning interfaces inspired by anime aesthetics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.min.js"></script>
-    <script>
-        function toggleDrawer() {
-            const drawer = document.getElementById('drawer');
-            drawer.classList.toggle('translate-x-full');
-        }
-    </script>
+  <footer class="gradient-bg py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl viga-font mb-4">Soumo</h3>
+          <p class="text-sm">Crafting digital experiences with code and creativity.</p>
+        </div>
+        <div>
+          <h3 class="text-xl viga-font mb-4">Connect</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-white hover:text-yellow-300"><i class="fab fa-github"></i></a>
+            <a href="#" class="text-white hover:text-yellow-300"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white hover:text-yellow-300"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white hover:text-yellow-300"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl viga-font mb-4">Contact</h3>
+          <p class="text-sm">Email: soumo@example.com</p>
+          <p class="text-sm">Phone: +123-456-7890</p>
+        </div>
+      </div>
+      <p class="text-center text-sm mt-8">© 2025 Soumo. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-4 right-4 z-50">
+    <span class="indicator">
+      <span class="indicator-item badge badge-success"></span>
+      <button class="btn btn-circle btn-primary"><i class="fas fa-comment"></i></button>
+    </span>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    });
+  </script>
 </body>
-                  </html>
+</html>
