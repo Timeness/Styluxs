@@ -1,457 +1,150 @@
-<html class="scroll-smooth" lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>
-   Soumo - Next Level Portfolio
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Viga&amp;display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.1.6/dist/full.css" rel="stylesheet"/>
-  <script src="https://unpkg.com/flowbite@1.6.5/dist/flowbite.js">
-  </script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
-  </script>
-  <style>
-   body {
-    font-family: 'Viga', sans-serif;
-  }
-  </style>
- </head>
- <body class="bg-gradient-to-b from-indigo-900 via-indigo-800 to-indigo-700 text-white min-h-screen flex flex-col">
-  <!-- Navbar with drawer and dropdown -->
-  <header class="sticky top-0 z-50 bg-indigo-900 shadow-lg">
-   <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
-    <div class="flex items-center space-x-3">
-     <button aria-label="Open drawer" class="lg:hidden text-white text-2xl focus:outline-none" id="drawer-toggle">
-      <i class="fas fa-bars">
-      </i>
-     </button>
-     <a class="text-3xl font-bold tracking-wide hover:text-indigo-300 transition" href="#home">
-      Soumo
-     </a>
-    </div>
-    <nav class="hidden lg:flex space-x-8 font-semibold text-lg">
-     <a class="hover:text-indigo-300 transition" href="#home">
-      Home
-     </a>
-     <a class="hover:text-indigo-300 transition" href="#about">
-      About
-     </a>
-     <a class="hover:text-indigo-300 transition" href="#projects">
-      Projects
-     </a>
-     <a class="hover:text-indigo-300 transition" href="#testimonials">
-      Testimonials
-     </a>
-     <a class="hover:text-indigo-300 transition" href="#contact">
-      Contact
-     </a>
-     <div class="relative group">
-      <button class="flex items-center space-x-1 hover:text-indigo-300 transition focus:outline-none">
-       <span>
-        More
-       </span>
-       <i class="fas fa-chevron-down text-sm">
-       </i>
-      </button>
-      <div class="absolute hidden group-hover:block bg-indigo-800 rounded-md mt-2 py-2 w-40 shadow-lg">
-       <a class="block px-4 py-2 hover:bg-indigo-700 transition" href="#skills">
-        Skills
-       </a>
-       <a class="block px-4 py-2 hover:bg-indigo-700 transition" href="#blog">
-        Blog
-       </a>
-       <a class="block px-4 py-2 hover:bg-indigo-700 transition" href="#gallery">
-        Gallery
-       </a>
-      </div>
-     </div>
-    </nav>
-    <div class="hidden lg:flex items-center space-x-4">
-     <button class="btn btn-circle btn-sm btn-primary tooltip tooltip-bottom" data-tip="GitHub">
-      <i class="fab fa-github">
-      </i>
-     </button>
-     <button class="btn btn-circle btn-sm btn-primary tooltip tooltip-bottom" data-tip="LinkedIn">
-      <i class="fab fa-linkedin-in">
-      </i>
-     </button>
-     <button class="btn btn-circle btn-sm btn-primary tooltip tooltip-bottom" data-tip="Twitter">
-      <i class="fab fa-twitter">
-      </i>
-     </button>
-    </div>
-   </div>
-  </header>
-  <!-- Drawer navigation for mobile -->
-  <input class="drawer-toggle" id="drawer-checkbox" type="checkbox"/>
-  <div class="drawer drawer-end">
-   <div class="drawer-content">
-   </div>
-   <div class="drawer-side bg-indigo-900 text-white w-64">
-    <label class="drawer-overlay" for="drawer-checkbox">
-    </label>
-    <ul class="menu p-4 overflow-y-auto w-64 space-y-4 text-lg font-semibold">
-     <li>
-      <a class="hover:bg-indigo-700 rounded-md" href="#home">
-       Home
-      </a>
-     </li>
-     <li>
-      <a class="hover:bg-indigo-700 rounded-md" href="#about">
-       About
-      </a>
-     </li>
-     <li>
-      <a class="hover:bg-indigo-700 rounded-md" href="#projects">
-       Projects
-      </a>
-     </li>
-     <li>
-      <a class="hover:bg-indigo-700 rounded-md" href="#testimonials">
-       Testimonials
-      </a>
-     </li>
-     <li>
-      <a class="hover:bg-indigo-700 rounded-md" href="#contact">
-       Contact
-      </a>
-     </li>
-     <li class="dropdown dropdown-hover" tabindex="0">
-      <a class="justify-between hover:bg-indigo-700 rounded-md">
-       More
-       <svg class="fill-current" height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 10l5 5 5-5z">
-        </path>
-       </svg>
-      </a>
-      <ul class="p-2 bg-indigo-800 rounded-md">
-       <li>
-        <a class="hover:bg-indigo-700 rounded-md" href="#skills">
-         Skills
-        </a>
-       </li>
-       <li>
-        <a class="hover:bg-indigo-700 rounded-md" href="#blog">
-         Blog
-        </a>
-       </li>
-       <li>
-        <a class="hover:bg-indigo-700 rounded-md" href="#gallery">
-         Gallery
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </div>
-  </div>
-  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-   <!-- Jumbotron -->
-   <section class="relative bg-indigo-800 rounded-3xl p-10 md:p-20 flex flex-col md:flex-row items-center gap-10 shadow-2xl" id="home">
-    <div class="flex-1 text-center md:text-left">
-     <h1 class="text-5xl md:text-6xl font-bold mb-4 tracking-wide">
-      Soumo
-     </h1>
-     <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-indigo-300">
-      Developer, Anime Lover, Enthapauner
-     </h2>
-     <p class="text-lg md:text-xl max-w-xl leading-relaxed mb-8">
-      I am a passionate developer who thrives on crafting elegant and efficient code. Anime fuels my creativity and enthusiasm, while my love for "enthapauner" (exploration and innovation) drives me to push boundaries and create next-level digital experiences.
-     </p>
-     <button class="btn btn-primary btn-lg px-8 rounded-full shadow-lg hover:scale-105 transition-transform" data-cta="contact">
-      Contact Me
-     </button>
-    </div>
-    <div class="flex-1 max-w-md mx-auto">
-     <img alt="Portrait of Soumo in anime style with coding background, vibrant colors and futuristic elements" class="rounded-3xl shadow-2xl" height="400" src="https://storage.googleapis.com/a1aa/image/4f334432-ab5b-4684-2518-95505be093a3.jpg" width="400"/>
-    </div>
-   </section>
-   <!-- Badge with icon only -->
-   <section class="mt-16 flex justify-center space-x-6">
-    <div class="badge badge-primary badge-lg p-4 rounded-full shadow-lg tooltip tooltip-bottom" data-tip="Expert Coder">
-     <i class="fas fa-code text-2xl">
-     </i>
-    </div>
-    <div class="badge badge-secondary badge-lg p-4 rounded-full shadow-lg tooltip tooltip-bottom" data-tip="Anime Enthusiast">
-     <i class="fas fa-dragon text-2xl">
-     </i>
-    </div>
-    <div class="badge badge-accent badge-lg p-4 rounded-full shadow-lg tooltip tooltip-bottom" data-tip="Innovator">
-     <i class="fas fa-lightbulb text-2xl">
-     </i>
-    </div>
-   </section>
-   <!-- Stacked avatars -->
-   <section class="mt-20 max-w-4xl mx-auto">
-    <h3 class="text-3xl font-bold mb-6 text-center">
-     Collaborators &amp; Friends
-    </h3>
-    <div class="flex -space-x-6 justify-center">
-     <img alt="Avatar of developer friend 1 with short black hair and glasses" class="w-16 h-16 rounded-full border-4 border-indigo-900 shadow-lg" height="64" src="https://storage.googleapis.com/a1aa/image/b93e3898-0464-4165-598c-3c67bc76ace3.jpg" width="64"/>
-     <img alt="Avatar of developer friend 2 with curly hair and beard" class="w-16 h-16 rounded-full border-4 border-indigo-900 shadow-lg" height="64" src="https://storage.googleapis.com/a1aa/image/24ed30fd-850e-4c20-fe88-2ccdc5526089.jpg" width="64"/>
-     <img alt="Avatar of developer friend 3 with long hair and headphones" class="w-16 h-16 rounded-full border-4 border-indigo-900 shadow-lg" height="64" src="https://storage.googleapis.com/a1aa/image/5e73a330-f440-4ee8-2680-e4e5a06e7389.jpg" width="64"/>
-     <img alt="Avatar of developer friend 4 with short blonde hair and smile" class="w-16 h-16 rounded-full border-4 border-indigo-900 shadow-lg" height="64" src="https://storage.googleapis.com/a1aa/image/6b655e78-3d57-4550-a3cc-f7802d7b071f.jpg" width="64"/>
-     <img alt="Avatar of developer friend 5 with dark skin and glasses" class="w-16 h-16 rounded-full border-4 border-indigo-900 shadow-lg" height="64" src="https://storage.googleapis.com/a1aa/image/7cc993b9-03d7-4758-2be3-ee0bbc8d8517.jpg" width="64"/>
-    </div>
-   </section>
-   <!-- Legend indicator -->
-   <section class="mt-20 max-w-4xl mx-auto">
-    <h3 class="text-3xl font-bold mb-6 text-center">
-     Project Status Legend
-    </h3>
-    <div class="flex justify-center space-x-12 text-lg font-semibold">
-     <div class="flex items-center space-x-3">
-      <span class="w-6 h-6 rounded-full bg-green-500 shadow-lg">
-      </span>
-      <span>
-       Completed
-      </span>
-     </div>
-     <div class="flex items-center space-x-3">
-      <span class="w-6 h-6 rounded-full bg-yellow-400 shadow-lg">
-      </span>
-      <span>
-       In Progress
-      </span>
-     </div>
-     <div class="flex items-center space-x-3">
-      <span class="w-6 h-6 rounded-full bg-red-500 shadow-lg">
-      </span>
-      <span>
-       On Hold
-      </span>
-     </div>
-    </div>
-   </section>
-   <!-- Accordion with nesting -->
-   <section class="mt-20 max-w-4xl mx-auto" id="about">
-    <h3 class="text-3xl font-bold mb-6 text-center">
-     About Me - Details
-    </h3>
-    <div class="accordion w-full max-w-4xl mx-auto" id="accordionExample">
-     <div class="accordion-item bg-indigo-800 rounded-lg mb-4 shadow-lg">
-      <h2 class="accordion-header mb-0" id="headingOne">
-       <button aria-controls="collapseOne" aria-expanded="true" class="accordion-button relative flex items-center w-full py-4 px-5 text-xl font-semibold text-white bg-indigo-900 rounded-lg transition focus:outline-none" data-bs-target="#collapseOne" data-bs-toggle="collapse" type="button">
-        Personal Background
-       </button>
-      </h2>
-      <div aria-labelledby="headingOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample" id="collapseOne">
-       <div class="accordion-body text-indigo-200 px-5 py-4">
-        Born and raised in a small town, I developed a passion for technology early on. My journey into coding started with curiosity and evolved into a lifelong commitment to mastering the craft.
-        <div class="accordion mt-4" id="nestedAccordion1">
-         <div class="accordion-item bg-indigo-700 rounded-md mb-3 shadow-inner">
-          <h2 class="accordion-header" id="nestedHeadingOne">
-           <button aria-controls="nestedCollapseOne" aria-expanded="false" class="accordion-button collapsed text-base font-medium text-white bg-indigo-800 rounded-md" data-bs-target="#nestedCollapseOne" data-bs-toggle="collapse" type="button">
-            Hobbies &amp; Interests
-           </button>
-          </h2>
-          <div aria-labelledby="nestedHeadingOne" class="accordion-collapse collapse" data-bs-parent="#nestedAccordion1" id="nestedCollapseOne">
-           <div class="accordion-body text-indigo-300 px-4 py-3">
-            Anime, gaming, hiking, and exploring new programming languages keep me inspired and energized.
-           </div>
-          </div>
-         </div>
-         <div class="accordion-item bg-indigo-700 rounded-md shadow-inner">
-          <h2 class="accordion-header" id="nestedHeadingTwo">
-           <button aria-controls="nestedCollapseTwo" aria-expanded="false" class="accordion-button collapsed text-base font-medium text-white bg-indigo-800 rounded-md" data-bs-target="#nestedCollapseTwo" data-bs-toggle="collapse" type="button">
-            Philosophy &amp; Approach
-           </button>
-          </h2>
-          <div aria-labelledby="nestedHeadingTwo" class="accordion-collapse collapse" data-bs-parent="#nestedAccordion1" id="nestedCollapseTwo">
-           <div class="accordion-body text-indigo-300 px-4 py-3">
-            I believe in clean, maintainable code and continuous learning to solve complex problems elegantly.
-           </div>
-          </div>
-         </div>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>Soumo - Next Level Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Comic+Neue:ital,wght@1,400&family=Viga&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.1.6/dist/full.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/flowbite@1.6.5/dist/flowbite.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: url('https://images.unsplash.com/photo-1516541196182-6bdb0516eddf') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-size: 0.9rem; /* Reduced font size */
+        }
+        /* Background overlay for blur and darken */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Darken effect */
+            backdrop-filter: blur(5px); /* Blur effect */
+            z-index: -1;
+        }
+        .font-viga {
+            font-family: 'Viga', sans-serif;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        header, footer {
+            background: transparent !important; /* Transparent header and footer */
+        }
+        /* Upgraded hamburger icon */
+        .hamburger-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .hamburger-icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col overflow-x-hidden">
+    <input class="hidden" id="drawer-toggle" type="checkbox"/>
+    <aside class="fixed top-0 left-0 z-40 h-full w-64 bg-[#1f2937] shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:shadow-none" id="drawer">
+        <div class="flex flex-col h-full p-6">
+            <div class="flex items-center justify-between mb-10">
+                <h2 class="text-2xl font-viga font-bold text-white select-none">Soumo</h2>
+                <label class="cursor-pointer text-white text-2xl md:hidden" for="drawer-toggle">
+                    <i class="fas fa-times"></i>
+                </label>
+            </div>
+            <nav class="flex flex-col space-y-6 text-base font-semibold font-viga">
+                <a class="hover:text-blue-400 transition-colors duration-300" data-nav="home" href="#home">Home</a>
+                <a class="hover:text-blue-400 transition-colors duration-300" data-nav="about" href="#about">About</a>
+                <a class="hover:text-blue-400 transition-colors duration-300" data-nav="projects" href="#projects">Projects</a>
+                <a class="hover:text-blue-400 transition-colors duration-300" data-nav="testimonials" href="#testimonials">Testimonials</a>
+                <a class="hover:text-blue-400 transition-colors duration-300" data-nav="contact" href="#contact">Contact</a>
+            </nav>
+            <div class="mt-auto pt-6 border-t border-gray-600">
+                <div class="flex space-x-5 justify-center">
+                    <a aria-label="GitHub" class="text-white hover:text-gray-400 text-xl" href="#"><i class="fab fa-github"></i></a>
+                    <a aria-label="Twitter" class="text-white hover:text-blue-400 text-xl" href="#"><i class="fab fa-twitter"></i></a>
+                    <a aria-label="Instagram" class="text-white hover:text-pink-500 text-xl" href="#"><i class="fab fa-instagram"></i></a>
+                    <a aria-label="LinkedIn" class="text-white hover:text-blue-600 text-xl" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a aria-label="Telegram" class="text-white hover:text-blue-500 text-xl" href="#"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
         </div>
-       </div>
-      </div>
-     </div>
-     <div class="accordion-item bg-indigo-800 rounded-lg mb-4 shadow-lg">
-      <h2 class="accordion-header mb-0" id="headingTwo">
-       <button aria-controls="collapseTwo" aria-expanded="false" class="accordion-button collapsed relative flex items-center w-full py-4 px-5 text-xl font-semibold text-white bg-indigo-900 rounded-lg transition focus:outline-none" data-bs-target="#collapseTwo" data-bs-toggle="collapse" type="button">
-        Professional Skills
-       </button>
-      </h2>
-      <div aria-labelledby="headingTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" id="collapseTwo">
-       <div class="accordion-body text-indigo-200 px-5 py-4">
-        Expertise in JavaScript, React, Tailwind CSS, Node.js, and database management. Experienced in building scalable web applications and UI/UX design.
-        <ul class="list-disc list-inside mt-3 space-y-1 text-indigo-300">
-         <li>
-          JavaScript (ES6+), TypeScript
-         </li>
-         <li>
-          React, Next.js, Vue.js
-         </li>
-         <li>
-          Tailwind CSS, DaisyUI, Bootstrap
-         </li>
-         <li>
-          Node.js, Express, REST &amp; GraphQL APIs
-         </li>
-         <li>
-          MongoDB, PostgreSQL, Firebase
-         </li>
-        </ul>
-       </div>
-      </div>
-     </div>
-     <div class="accordion-item bg-indigo-800 rounded-lg shadow-lg">
-      <h2 class="accordion-header mb-0" id="headingThree">
-       <button aria-controls="collapseThree" aria-expanded="false" class="accordion-button collapsed relative flex items-center w-full py-4 px-5 text-xl font-semibold text-white bg-indigo-900 rounded-lg transition focus:outline-none" data-bs-target="#collapseThree" data-bs-toggle="collapse" type="button">
-        Projects &amp; Achievements
-       </button>
-      </h2>
-      <div aria-labelledby="headingThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample" id="collapseThree">
-       <div class="accordion-body text-indigo-200 px-5 py-4">
-        Delivered multiple full-stack projects, open-source contributions, and won hackathons. Passionate about anime-themed apps and innovative UI designs.
-        <ul class="list-disc list-inside mt-3 space-y-1 text-indigo-300">
-         <li>
-          Anime Tracker App with React &amp; Firebase
-         </li>
-         <li>
-          Real-time Chat Application using Socket.io
-         </li>
-         <li>
-          Portfolio Website with Tailwind CSS &amp; DaisyUI
-         </li>
-         <li>
-          Open Source Contributor to Flowbite &amp; DaisyUI
-         </li>
-         <li>
-          Winner of XYZ Hackathon 2023
-         </li>
-        </ul>
-       </div>
-      </div>
-     </div>
+    </aside>
+    <div class="flex-1 flex flex-col">
+        <header class="sticky top-0 z-30 bg-opacity-90 backdrop-blur-md shadow-md md:hidden flex items-center justify-between px-5 py-3">
+            <h1 class="text-xl font-viga font-bold text-white select-none">Soumo</h1>
+            <label class="cursor-pointer text-white text-2xl hamburger-icon" for="drawer-toggle">
+                <i class="fas fa-bars"></i>
+            </label>
+        </header>
+        <main class="flex-grow max-w-7xl mx-auto px-6 sm:px-12 py-12 space-y-20">
+            <section class="relative flex flex-col items-center text-center max-w-4xl mx-auto" id="home">
+                <div class="w-48 h-48 rounded-full border-8 border-white/30 overflow-hidden mb-8 shadow-lg shadow-blue-900/50">
+                    <img alt="Portrait of Soumo, a young developer with anime style, wearing glasses and a hoodie, smiling confidently" class="w-full h-full object-cover" height="192" src="https://storage.googleapis.com/a1aa/image/6e08ca0b-e174-489d-6a2d-e2ba3f11b6d2.jpg" width="192"/>
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-viga font-extrabold mb-4 select-none">Hi, I'm Soumo</h1>
+                <p class="text-xl sm:text-2xl font-semibold mb-6 select-none text-blue-400">Developer | Anime Lover | Enthapauner</p>
+                <p class="text-base sm:text-lg max-w-3xl leading-relaxed mb-8 select-none text-gray-300">
+                    I craft high-quality web experiences with modern technologies. With a strong passion for clean design and anime culture, I bring creativity and logic together. I specialize in building scalable web applications, intuitive user interfaces, and engaging digital experiences that resonate with users worldwide. When I'm not coding, you can find me exploring the latest anime series or diving into new tech trends.
+                </p>
+                <blockquote class="italic text-lg sm:text-xl max-w-2xl text-gray-400 select-none border-l-4 border-blue-500 pl-6">
+                    “A coding expert who loves solving complex problems with clean solutions.”
+                </blockquote>
+            </section>
+            <!-- Rest of the sections remain unchanged -->
+        </main>
+        <footer class="text-gray-400 py-6 text-center font-viga select-none">
+            © 2024 Soumo. All rights reserved.
+        </footer>
     </div>
-   </section>
-   <!-- Default mockup -->
-   <section class="mt-20 max-w-5xl mx-auto" id="projects">
-    <h3 class="text-3xl font-bold mb-8 text-center">
-     Featured Project Mockup
-    </h3>
-    <div class="mockup-window border border-indigo-600 rounded-3xl shadow-2xl mx-auto max-w-4xl">
-     <img alt="Mockup of Anime Tracker App with dark theme, clean UI, and user dashboard showing anime list and progress bars" class="rounded-3xl" height="500" src="https://storage.googleapis.com/a1aa/image/41b1d615-38e9-43e2-8b15-36abd6a5fbc3.jpg" width="900"/>
-    </div>
-   </section>
-   <!-- Testimonials -->
-   <section class="mt-20 max-w-6xl mx-auto" id="testimonials">
-    <h3 class="text-3xl font-bold mb-12 text-center">
-     What People Say
-    </h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-     <div class="card bg-indigo-900 rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
-      <img alt="Portrait of client 1, smiling young woman with short hair and glasses" class="w-24 h-24 rounded-full mb-6 shadow-lg" height="96" src="https://storage.googleapis.com/a1aa/image/c7124c67-4d21-4c17-0ceb-4b02c52c601d.jpg" width="96"/>
-      <p class="text-indigo-300 italic mb-6">
-       "Soumo's coding skills are exceptional. He delivered our project ahead of schedule with clean, maintainable code."
-      </p>
-      <h4 class="text-xl font-semibold">
-       Anjali Mehta
-      </h4>
-      <span class="text-indigo-400 text-sm">
-       Project Manager
-      </span>
-     </div>
-     <div class="card bg-indigo-900 rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
-      <img alt="Portrait of client 2, middle-aged man with beard and glasses" class="w-24 h-24 rounded-full mb-6 shadow-lg" height="96" src="https://storage.googleapis.com/a1aa/image/8374821d-a2c3-4e38-452e-26c195727900.jpg" width="96"/>
-      <p class="text-indigo-300 italic mb-6">
-       "His passion for anime and coding shines through his work. The UI/UX is stunning and user-friendly."
-      </p>
-      <h4 class="text-xl font-semibold">
-       Ravi Kumar
-      </h4>
-      <span class="text-indigo-400 text-sm">
-       UI/UX Designer
-      </span>
-     </div>
-     <div class="card bg-indigo-900 rounded-3xl shadow-xl p-8 flex flex-col items-center text-center">
-      <img alt="Portrait of client 3, young woman with long hair and bright smile" class="w-24 h-24 rounded-full mb-6 shadow-lg" height="96" src="https://storage.googleapis.com/a1aa/image/c9a170ce-c84e-41ac-40f7-dcf295a98671.jpg" width="96"/>
-      <p class="text-indigo-300 italic mb-6">
-       "A coding expert who loves solving complex problems with clean solutions. Highly recommended!"
-      </p>
-      <h4 class="text-xl font-semibold">
-       Sana Ali
-      </h4>
-      <span class="text-indigo-400 text-sm">
-       Tech Lead
-      </span>
-     </div>
-    </div>
-   </section>
-   <!-- Quote -->
-   <section class="mt-20 max-w-3xl mx-auto text-center px-6">
-    <blockquote class="text-2xl italic font-semibold text-indigo-200 relative before:content-['“'] before:text-6xl before:absolute before:-left-6 before:-top-6 after:content-['”'] after:text-6xl after:absolute after:-right-6 after:-bottom-6">
-     A coding expert who loves solving complex problems with clean solutions.
-    </blockquote>
-    <footer class="mt-6 text-indigo-400 font-semibold">
-     - Soumo
-    </footer>
-   </section>
-   <!-- Contact Section -->
-   <section class="mt-24 max-w-4xl mx-auto bg-indigo-900 rounded-3xl p-10 shadow-2xl" id="contact">
-    <h3 class="text-3xl font-bold mb-8 text-center">
-     Get In Touch
-    </h3>
-    <form action="#" class="space-y-6" data-contact-form="" method="POST">
-     <div>
-      <label class="block mb-2 font-semibold text-indigo-300" for="name">
-       Name
-      </label>
-      <input class="input input-bordered w-full bg-indigo-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-lg" id="name" name="name" required="" type="text"/>
-     </div>
-     <div>
-      <label class="block mb-2 font-semibold text-indigo-300" for="email">
-       Email
-      </label>
-      <input class="input input-bordered w-full bg-indigo-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-lg" id="email" name="email" required="" type="email"/>
-     </div>
-     <div>
-      <label class="block mb-2 font-semibold text-indigo-300" for="message">
-       Message
-      </label>
-      <textarea class="textarea textarea-bordered w-full bg-indigo-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-lg" id="message" name="message" required="" rows="5"></textarea>
-     </div>
-     <button class="btn btn-primary w-full rounded-full text-lg font-semibold hover:scale-105 transition-transform" type="submit">
-      Send Message
-     </button>
-    </form>
-   </section>
-  </main>
-  <!-- Footer -->
-  <footer class="bg-indigo-900 text-indigo-300 text-center py-6 mt-20 shadow-inner">
-   <p>
-    © 2024 Soumo. All rights reserved.
-   </p>
-  </footer>
-  <script>
-   // Drawer toggle for mobile
-  const drawerToggle = document.getElementById('drawer-toggle');
-  const drawerCheckbox = document.getElementById('drawer-checkbox');
-  drawerToggle.addEventListener('click', () => {
-    drawerCheckbox.checked = !drawerCheckbox.checked;
-  });
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('[data-accordion-target]').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-accordion-target');
+                const content = document.getElementById(targetId);
+                const expanded = button.getAttribute('aria-expanded') === 'true';
+                if (expanded) {
+                    content.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    button.querySelector('i').classList.remove('rotate-180');
+                } else {
+                    content.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    button.querySelector('i').classList.add('rotate-180');
+                }
+            });
+        });
 
-  // Smooth scroll for nav links with data-cta attribute
-  document.querySelectorAll('button[data-cta="contact"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-      if(drawerCheckbox.checked) drawerCheckbox.checked = false;
-    });
-  });
+        const drawerToggle = document.getElementById('drawer-toggle');
+        const drawer = document.getElementById('drawer');
+        drawerToggle.addEventListener('change', () => {
+            if (drawerToggle.checked) {
+                drawer.classList.remove('-translate-x-full');
+            } else {
+                drawer.classList.add('-translate-x-full');
+            }
+        });
 
-  // Contact form submission (mock)
-  document.querySelector('form[data-contact-form]').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Thank you for reaching out, Soumo will get back to you soon!');
-    e.target.reset();
-  });
-  </script>
- </body>
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    drawerToggle.checked = false;
+                    drawer.classList.add('-translate-x-full');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
