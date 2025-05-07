@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="google" content="notranslate">
+    <meta name="google" content="nopagereadaloud">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="og:type" content="website">
+    <title>404: Error Occurred</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Signika', sans-serif;
+        background-color: #000;
+        color: #fff;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+      }
+      img {
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+      }
+      a {
+        color: #ccc;
+        text-decoration: underline;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?auto=format&fit=crop&w=800&q=80" alt="Coffee">
+    <h2>Oops! Something went wrong.</h2>
+    <p>We're experiencing some technical difficulties but our team is on it. While we work on fixing the issue, take a break with a cup of coffee.</p>
+    <a href="/">Return Home</a>
+
+    <script>
+      document.addEventListener('keydown', function (e) {
+        if (
+          e.keyCode === 123 ||
+          (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
+          (e.ctrlKey && e.key.toLowerCase() === 'u')
+        ) {
+          e.preventDefault();
+          return false;
+        }
+      });
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+      document.addEventListener("mousedown", function (e) {
+        if (e.button === 2 || e.button === 1) {
+          e.preventDefault();
+          return false;
+        }
+      });
+    </script>
+  </body>
+</html>
