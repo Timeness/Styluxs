@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Close Window</title>
+  <script>
+    function closeWindow() {
+      window.close();
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://api.iconify.design/mdi:home-outline.svg" rel="icon" type="image/svg+xml">
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+  <button onclick="closeWindow()" class="flex flex-col items-center p-4 hover:bg-gray-800 rounded-xl">
+    <span class="text-4xl">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="white">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+    </span>
+    <span class="mt-2 text-sm">Close Home</span>
+  </button>
+</body>
+</html>
