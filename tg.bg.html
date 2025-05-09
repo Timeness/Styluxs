@@ -1,37 +1,65 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Telegram Style Background</title>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>BlockX Listing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: url('https://telegram.org/file/811140819/1/0e1e3f3e9b3c7c7b1a') no-repeat center center fixed;
-      background-size: cover;
-      font-family: sans-serif;
-      color: white;
-    }
-    .content {
-      position: absolute;
-      z-index: 10;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 30px;
-      border-radius: 10px;
+    body {
+      font-family: 'Orbitron', sans-serif;
     }
   </style>
 </head>
-<body>
-  <div class="content">
-    <h1>Welcome</h1>
-    <p>This site uses a Telegram-style background.</p>
-  </div>
+<body class="bg-white text-gray-800">
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script>
+    const { createElement, useState, useEffect } = React;
+    const { render } = ReactDOM;
+
+    const ProgressBar = ({ message }) => {
+      const [progress, setProgress] = useState(0);
+      const barLength = 10;
+
+      useEffect(() => {
+        const percentages = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100) + 1).sort((a, b) => a - b);
+        let index = 0;
+
+        const interval = setInterval(() => {
+          if (index < percentages.length) {
+            setProgress(percentages[index]);
+            index++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 2000);
+
+        return () => clearInterval(interval);
+      }, []);
+
+      const barProgress = Math.round(progress / 10);
+      const bar = '▰'.repeat(barProgress) + '▱'.repeat(barLength - barProgress);
+      const progressText = `${bar} | ${progress}%`;
+
+      return createElement('div', { className: 'text-green-800 p-4 rounded mb-4' }, progressText);
+    };
+
+    const App = () => {
+      return createElement('main', { className: 'p-4' },
+        createElement(ProgressBar, { message: "Starting..." }),
+        createElement('div', { className: 'flex items-center space-x-2' },
+          createElement('span', { className: 'text-xl font-bold' }, '5.0'),
+          createElement('span', { className: 'text-gray-500' }, '/5.0'),
+          createElement('span', { className: 'text-gray-500' }, 'Article rating'),
+          createElement('span', { className: 'text-gray-500' }, '2 Reviews')
+        )
+      );
+    };
+
+    render(createElement(App), document.getElementById('root'));
+  </script>
 </body>
 </html>
