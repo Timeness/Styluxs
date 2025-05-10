@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>exas | Build</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+      color: #fff;
+      font-family: 'Signika', sans-serif;
+    }
+
+    .rotating-image {
+      width: 130px;
+      animation: spin 6s linear infinite;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .status {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.75;
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    .footer-ip {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <img class="rotating-image" src="https://i.ibb.co/nMyrZ7X/20250510-125028.jpg" alt="Rotating Image">
+  <div class="status" id="status">Checking system security...</div>
+  <div class="footer-ip" id="ip">IP: Loading...</div>
+
+  <script>
+    const status = document.getElementById("status");
+    const ipDisplay = document.getElementById("ip");
+
+    async function fetchIP() {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const data = await res.json();
+        ipDisplay.textContent = "IP: " + data.ip;
+      } catch {
+        ipDisplay.textContent = "IP: Unknown";
+      }
+    }
+
+    async function securityCheck() {
+      const startTime = Date.now();
+
+      function checkFeatures() {
+        return (
+          'ontouchstart' in window ||
+          navigator.maxTouchPoints > 0 ||
+          /Android|iPhone|iPad|iPod|Windows Phone|Macintosh|Windows/i.test(navigator.userAgent)
+        );
+      }
+
+      function checkInteraction() {
+        return new Promise((resolve) => {
+          let interacted = false;
+          const resolveIfInteracted = () => {
+            if (!interacted) {
+              interacted = true;
+              resolve(true);
+            }
+          };
+          window.addEventListener('mousemove', resolveIfInteracted, { once: true });
+          window.addEventListener('touchstart', resolveIfInteracted, { once: true });
+          window.addEventListener('click', resolveIfInteracted, { once: true });
+
+          // fallback for touch devices that don't register interaction
+          setTimeout(() => {
+            resolve(interacted);
+          }, 3000);
+        });
+      }
+
+      function getFingerprint() {
+        return navigator.userAgent + screen.width + screen.height + navigator.language;
+      }
+
+      const hasFeatures = checkFeatures();
+      const userFingerprint = getFingerprint();
+      const interacted = await checkInteraction();
+      const stayedLongEnough = (Date.now() - startTime) > 2500;
+
+      const passed = hasFeatures && stayedLongEnough && interacted && userFingerprint.length > 20;
+
+      if (passed) {
+        status.textContent = "All systems secure. Redirecting...";
+        setTimeout(() => {
+          window.location.href = "next.html"; // CHANGE this to your actual redirect page
+        }, 1200);
+      } else {
+        status.textContent = "Security check failed. Please reload or try another browser.";
+      }
+    }
+
+    fetchIP();
+    securityCheck();
+  </script>
+</body>
+</html>
