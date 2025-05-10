@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Security Simulation Lab</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #eee; padding: 20px; }
+    h2 { color: #00f3ff; }
+    section { margin-bottom: 30px; padding: 10px; border: 1px solid #333; border-radius: 6px; background: #222; }
+    a.btn { padding: 6px 12px; background: #00f3ff; color: #000; text-decoration: none; border-radius: 4px; }
+    canvas { border: 1px solid #fff; }
+  </style>
+</head>
+<body>
+
+<h1>JavaScript-Based Security Simulation Lab</h1>
+
+<section>
+  <h2>1. Fake Image Download (.jpg.exe)</h2>
+  <a class="btn" href="data:application/octet-stream,Fake%20EXE%20Content" download="image.jpg.exe">
+    Download Fake Image
+  </a>
+  <p>Simulates a misleading file name attack.</p>
+</section>
+
+<section>
+  <h2>2. Image OnError Payload Simulation</h2>
+  <img src="invalid.jpg" onerror="alert('JS triggered on image load fail!')" width="200">
+  <p>This simulates a payload hidden via broken image.</p>
+</section>
+
+<section>
+  <h2>3. Steganography (Hide Text in Image using Canvas)</h2>
+  <canvas id="canvas" width="100" height="50"></canvas>
+  <script>
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, 100, 50);
+    ctx.fillStyle = "#000"; ctx.fillText("S", 10, 30); // simulate hidden letter
+  </script>
+  <p>Pixel data can hide text. Use canvas.getImageData to read it.</p>
+</section>
+
+<section>
+  <h2>4. Drive-by Download Simulation</h2>
+  <a class="btn" id="dl">Download Text File</a>
+  <script>
+    const blob = new Blob(["This is a test file!"], {type: "text/plain"});
+    document.getElementById("dl").href = URL.createObjectURL(blob);
+    document.getElementById("dl").download = "test.txt";
+  </script>
+</section>
+
+<section>
+  <h2>5. Video Overlay Phishing Simulation</h2>
+  <div style="position: relative; display:inline-block;">
+    <video width="300" controls autoplay muted loop>
+      <source src="sample.mp4" type="video/mp4">
+      Your browser does not support video.
+    </video>
+    <div style="position:absolute; top:10px; left:10px; background:red; color:white; padding:5px;">
+      Update Required
+    </div>
+  </div>
+  <p>Overlay can trick users — often used in phishing.</p>
+</section>
+
+</body>
+</html>
