@@ -5,133 +5,101 @@
   <title>exas | Build</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
   <style>
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      user-select: none;
-    }
-
-    html, body {
-      height: 100%;
+      height: 100vh;
       background-color: #000000;
-      font-family: Arial, sans-serif;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       color: #fff;
+      font-family: 'Signika', sans-serif;
+      flex-direction: column;
     }
 
-    img.rotating-image {
-      width: 100px;
-      animation: spin 8s linear infinite;
-      margin-bottom: 40px;
+    .rotating-image {
+      width: 200px;
+      animation: spin 6s linear infinite;
       pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .status {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.75;
+      text-align: center;
+      padding: 0 10px;
     }
 
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
-    .puzzle-box {
-      display: grid;
-      grid-template-columns: repeat(4, 50px);
-      gap: 8px;
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .puzzle-piece {
-      width: 50px;
-      height: 50px;
-      background: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      border-radius: 6px;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-
-    .puzzle-piece.clicked {
-      background-color: #0f0;
-      pointer-events: none;
-    }
-
-    .verify-btn {
-      margin-top: 20px;
-      background: #444;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .verify-btn:hover {
-      background: #666;
-    }
-
-    .message {
-      margin-top: 10px;
-      font-size: 14px;
-    }
   </style>
 </head>
-<body oncontextmenu="return false">
-  <img class="rotating-image" src="https://i.ibb.co/nMyrZ7Xs/20250510-125028.jpg" alt="Rotating">
-  
-  <div class="puzzle-box" id="box"></div>
-  <button class="verify-btn" onclick="verify()">Verify</button>
-  <div class="message" id="msg"></div>
+<body>
+  <img class="rotating-image" src="https://i.ibb.co/nMyrZ7X/20250510-125028.jpg" alt="Rotating Image">
+  <div class="status" id="status">Checking system security...</div>
 
   <script>
-    const key = "exas_veri_done";
-    if (localStorage.getItem(key)) window.location.href = "next.html";
+    const status = document.getElementById("status");
 
-    const box = document.getElementById("box");
-    const msg = document.getElementById("msg");
-    const correctIndexes = new Set();
-    const required = new Set();
+    async function securityCheck() {
+      const startTime = Date.now();
 
-    while (required.size < 5) required.add(Math.floor(Math.random() * 16));
+      function checkFeatures() {
+        return (
+          'ontouchstart' in window ||
+          navigator.maxTouchPoints > 0 ||
+          /Android|iPhone|iPad|iPod|Windows Phone|Macintosh|Windows/i.test(navigator.userAgent)
+        );
+      }
 
-    for (let i = 0; i < 16; i++) {
-      const d = document.createElement("div");
-      d.className = "puzzle-piece";
-      d.textContent = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-      d.onclick = () => {
-        d.classList.add("clicked");
-        correctIndexes.add(i);
-      };
-      box.appendChild(d);
-    }
+      function checkInteraction() {
+        return new Promise((resolve) => {
+          let interacted = false;
+          const resolveIfInteracted = () => {
+            if (!interacted) {
+              interacted = true;
+              resolve(true);
+            }
+          };
+          window.addEventListener('mousemove', resolveIfInteracted, { once: true });
+          window.addEventListener('touchstart', resolveIfInteracted, { once: true });
+          window.addEventListener('click', resolveIfInteracted, { once: true });
+          setTimeout(() => {
+            if (!interacted) resolve(false);
+          }, 3000);
+        });
+      }
 
-    function verify() {
-      let passed = true;
-      for (let val of required) if (!correctIndexes.has(val)) passed = false;
+      function getFingerprint() {
+        return navigator.userAgent + screen.width + screen.height + navigator.language;
+      }
+
+      const hasFeatures = checkFeatures();
+      const userFingerprint = getFingerprint();
+      const interacted = await checkInteraction();
+      const stayedLongEnough = (Date.now() - startTime) > 2500;
+
+      const passed = hasFeatures && interacted && stayedLongEnough && userFingerprint.length > 20;
+
       if (passed) {
-        msg.style.color = "#0f0";
-        msg.textContent = "Verification success. Redirecting...";
-        localStorage.setItem(key, "true");
-        setTimeout(() => window.location.href = "next.html", 1000);
+        status.textContent = "All systems secure. Redirecting...";
+        setTimeout(() => {
+          window.location.href = "next.html"; // CHANGE this to your actual redirect page
+        }, 1200);
       } else {
-        msg.style.color = "#f00";
-        msg.textContent = "Verification failed. Try again.";
-        correctIndexes.clear();
-        [...box.children].forEach(c => c.classList.remove("clicked"));
+        status.textContent = "Security check failed. Please reload or try another browser.";
       }
     }
 
-    document.addEventListener("gesturestart", e => e.preventDefault());
-    document.addEventListener("touchmove", e => { if (e.scale !== 1) e.preventDefault(); }, { passive: false });
+    securityCheck();
   </script>
 </body>
 </html>
