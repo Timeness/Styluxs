@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>exas | Build</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+
+    .rotating-image {
+      width: 200px;
+      animation: spin 6s linear infinite;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .status {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <img class="rotating-image" src="https://i.ibb.co/nMyrZ7Xs/20250510-125028.jpg" alt="Rotating Image">
+  <div class="status" id="status">Checking system security...</div>
+
+  <script>
+    const status = document.getElementById("status");
+
+    async function securityCheck() {
+      const startTime = Date.now();
+
+      function checkFeatures() {
+        return (
+          'ontouchstart' in window ||
+          navigator.maxTouchPoints > 0 ||
+          navigator.userAgent
+        );
+      }
+
+      function checkInteraction() {
+        return new Promise((resolve) => {
+          let interacted = false;
+          const listener = () => {
+            interacted = true;
+            resolve(true);
+          };
+          window.addEventListener('mousemove', listener, { once: true });
+          window.addEventListener('touchstart', listener, { once: true });
+          setTimeout(() => {
+            if (!interacted) resolve(false);
+          }, 3000);
+        });
+      }
+
+      function getFingerprint() {
+        return navigator.userAgent + screen.width + screen.height + navigator.language;
+      }
+
+      const hasFeatures = checkFeatures();
+      const userFingerprint = getFingerprint();
+      const interacted = await checkInteraction();
+      const stayedLongEnough = (Date.now() - startTime) > 2500;
+
+      const passed = hasFeatures && interacted && stayedLongEnough && userFingerprint.length > 20;
+
+      if (passed) {
+        status.textContent = "All systems secure. Redirecting...";
+        setTimeout(() => {
+          window.location.href = "next.html"; // <-- CHANGE to your actual page
+        }, 1200);
+      } else {
+        status.textContent = "Security check failed. Please reload or try another browser.";
+      }
+    }
+
+    securityCheck();
+  </script>
+</body>
+</html>
