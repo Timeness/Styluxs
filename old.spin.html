@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rotating Image</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #1f1f1f; /* Extracted from the image background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rotating-image {
+      width: 200px;
+      animation: spin 6s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <img class="rotating-image" src="https://i.ibb.co/nMyrZ7Xs/20250510-125028.jpg" alt="Rotating Image">
+</body>
+</html>
